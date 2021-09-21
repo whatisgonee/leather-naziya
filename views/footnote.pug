@@ -1,0 +1,16 @@
+#footnote
+	div(style="display:flex;flex-direction:column;gap:5%;")
+		h3 Остальное
+		button.btn(style="font-family: 'Montserrat', sans-serif;margin-left:-4px;", onclick="search()") Поиск
+		a.link(href="/about-us") О нас
+		a.link(href="/contact-us") Свяжитесь с нами
+	div.socialMedia
+		h3 Соцсети
+		a#instagram(href="https://www.instagram.com/naziya.leather/", target="_blank") Instagram 
+			i.fab.fa-instagram
+	div.newsletter
+		h3 Новостная рассылка
+		p Желаете получать новости о поступлении новых товаров или записей в блоге? Подпишись на нашу новостную рассылку!
+		form.newsletter-sub(method="POST", action="/newsletter")
+			input(name="email", type="email", placeholder="Почта", required)
+			button.sub(type="submit") Подписаться

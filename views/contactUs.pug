@@ -1,0 +1,19 @@
+html
+	head
+		title Свяжитесь с нами
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("about-us")
+
+		#about-us.center
+			p Свяжитесь с нами
+			h1 Handmade Naziya
+
+			p Вы всегда можете связаться с нами через 
+				a(href="mailto: karimaltaybek@gmail.com", target="_blank") почту
+			p или через наш 
+				a#instagram(href="https://www.instagram.com/naziya.leather/", target="_blank", style="color:#e1306c") Instagram 
+					i.fab.fa-instagram
+
+		include footnote.pug

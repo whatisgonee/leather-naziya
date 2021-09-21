@@ -1,0 +1,37 @@
+html
+	head
+		title Заказ
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+	
+		#admin.center
+			p Админ
+			a.back(href="/admin/orders", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Заказ
+			h2 Информация:
+			p Номер заказа: #{order._id}
+			p Статус: #{order.status}
+			p Имя клиента: #{order.name}
+			p Почта: #{order.email}
+			p Телефон: #{order.phone}
+			h2 Товары:
+			div
+				- for(var i = 0; i < order.products.length; i++) {
+					h4 Товар ##{i+1}
+					p Название: #{order.products[i].name}
+					p Количество: #{order.products[i].quantity}
+					p Цена: #{order.products[i].price}
+				- }
+			h2 Сумма: #{order.totalSum}
+			if(order.status == "Подтвержден")
+				a.send.center(href="/admin/confirmation/send?id=" + order._id) Отправить
+				.vertical-line.center
+				a.delete.center(href="/admin/confirmation/delete?id=" + order._id) Отклонить
+			else if(order.status == "В ожидании")
+				a.confirm.center(href="/admin/confirmation/confirm?id=" + order._id) Принять
+				.vertical-line.center
+				a.delete.center(href="/admin/confirmation/delete?id=" + order._id) Отклонить
+		include footnote.pug

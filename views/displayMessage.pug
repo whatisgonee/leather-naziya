@@ -1,0 +1,12 @@
+html
+	head
+		title=titleTop
+		include links.pug
+	body
+		include navbar.pug
+		+navbar(section)
+		.message
+			p=topMessage
+			h1=message
+			a.link(href=backLink) Обратно
+		include footnote.pug

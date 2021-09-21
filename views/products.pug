@@ -1,0 +1,34 @@
+html
+	head
+		title Все товары
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		#featured-collections.center
+			p Админ
+			a.back(href="/admin/", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Все товары
+			a.admin-link.center(href="/admin/products/add", style="width:30%;") Добавить товар
+			br
+			.showcase.center
+					- for(var i = 0; i < products.length; i++) {
+						.product-showcase
+							a(href="/collections/products/" + products[i]._id)
+								img.showcase-image(src="/public/media/" + products[i].filenames[0])
+							a.showcase-link(href="/collections/products/" + products[i]._id)=products[i].name
+							form.add-form(action="/admin/products/remove", method="POST")
+								input.hidden(value=products[i]._id, name="id")
+								button.delete.center(type="submit")
+									i.fas.fa-trash-alt
+							a.send.center(href="/admin/products/edit?id=" + products[i]._id)
+								i.fas.fa-pen
+					- }
+					- if(products.length % 3 != 0) {
+						- for(var j = 0; j  < products.length % 3 + 1; j++) {
+							div
+								p
+						- }
+					- }
+		include footnote.pug

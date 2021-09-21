@@ -1,0 +1,45 @@
+html
+	head
+		title Вы уверены?
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		
+		div#admin.center()
+			p Вы уверены?
+			a.back(href="/admin/orders/", title="Обратно")
+				i.fas.fa-arrow-left
+			- if(type == "confirm")
+				h1 Подтверждение
+				p Вы уверены что хотите подтвердить заказ? Клиент получит письмо о начале работы над его заказом.
+				br
+				a.confirmation-button.center(href="/admin/orders/confirm?id=" + id) Да
+				br
+				a.confirmation-button.center(href="/admin/orders/") Обратно
+				br
+				p(style="color:grey") Подтверждение заказа означает что вы начали работу над ним.
+			- else if(type == "send")
+				h1 Отправление
+				p Вы уверены что хотите отправить заказ? Клиент получит письмо об отправки его заказа. Заказ будет автоматический архивирован
+				br
+				a.confirmation-button.center(href="/admin/orders/send?id=" + id) Да
+				br
+				a.confirmation-button.center(href="/admin/orders/") Обратно
+				br
+				p(style="color:grey") Отправление заказа означает что заказ был сформирован и отправлен клиенту.
+			- else if(type == "delete")
+				h1 Отклонение
+				p Вы уверены что хотите отклонить заказ? Клиент получит письмо об отклонении его заказа. Заказ будет автоматический архивирован.
+				br
+				form(action="/admin/orders/delete", method="GET")
+					input.hidden(name="id", value=id)
+					textarea(name="note", placeholder="Причина отклонения заказа (необязательно)", style="font-family: 'Montserrat', sans-serif")
+					br
+					br
+					button.confirmation-button.center(type="submit", style="font-family: 'Montserrat', sans-serif") Да
+				br
+				p(style="color:grey") Отклонение заказа означает что по некоторым причинам вы не можете его удовлетворить. Вы можете указать причину отклонения.
+			
+		
+		include footnote.pug

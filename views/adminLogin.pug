@@ -1,0 +1,20 @@
+html
+	head
+		title Админ
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		
+		#admin-login
+			p Админ
+			h1 Введите пароль:
+			p=formMessage
+			form(action="/admin/login", method="POST")
+				input.hidden(value=referer, name="referer")
+				div
+					label(for="password") Пароль: 
+					input(type="password", name="password", required)
+				br
+				button.add-button(type="submit") Войти
+		include footnote.pug

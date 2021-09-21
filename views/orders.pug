@@ -1,0 +1,39 @@
+html
+	head
+		title Список заказов
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+	
+		#admin.center
+			p Админ
+			a.back(href="/admin/", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Заказы
+			.orders
+				- for(var i = 0; i < orders.length; i++) {
+					- if(orders[i].status == "Подтвержден")
+						a.admin-order(href="/admin/orders/" + orders[i]._id, style="color: green;") Заказ ##{orders[i].number}
+						.vertical-line.center
+						a.send.center(href="/admin/confirmation/send?id=" + orders[i]._id)
+							i.fas.fa-share
+					- else if(orders[i].status == "В ожидании")
+						a.admin-order(href="/admin/orders/" + orders[i]._id) Заказ ##{orders[i].number}
+						.vertical-line.center
+						a.confirm.center(href="/admin/confirmation/confirm?id=" + orders[i]._id)
+							i.fas.fa-check
+					- if(orders[i].status != "Отправлен" && orders[i].status != "Архивирован" && orders[i].status != "Отклонен")
+						.vertical-line.center
+						a.delete.center(href="/admin/confirmation/delete?id=" + orders[i]._id)
+							i.fas.fa-trash-alt
+				- }
+			h2 Архивированные заказы 
+				button#hide.hide(onclick="archive")
+					i.fas.fa-arrow-up
+			#archived.orders
+				- for(var i = 0; i < orders.length; i++) {
+					- if(orders[i].status == "Отправлен" || orders[i].status == "Архивирован" || orders[i].status == "Отклонен")
+						a.admin-order(href="/admin/orders/" + orders[i]._id, style="color: grey;") Заказ ##{orders[i].number}
+				- }
+		include footnote.pug

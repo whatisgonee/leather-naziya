@@ -1,0 +1,82 @@
+html
+	head
+		title Главная
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("main")
+		if(message)
+			#message
+				p #{message}
+					a(href="/cart") корзину
+				button(onclick="messageClose()") ×
+		#featured-collections.center
+			p Избранные Товары
+			h1 Кошельки
+			.showcase.center
+				- if(wallets.length < 5)
+					- for(var i = 0; i < wallets.length; i++) {
+						.product-showcase
+							a(href="/collections/wallets/" + wallets[i]._id)
+								img.showcase-image(src="/public/media/" + wallets[i].filenames[0])
+							a.showcase-link(href="/collections/wallets/" + wallets[i]._id)=wallets[i].name
+							form.add-form(action="/cart/add", method="POST")
+								input.hidden(value="/", name="referer")
+								input.hidden(value=wallets[i]._id, name="id")
+								input.hidden(value=1, name="quantity")
+								button.add-button(type="submit") В корзину
+					- }
+				- else {
+					- for(var i = 0; i < 5; i++) {
+						.product-showcase
+							a(href="/collections/wallets/" + wallets[i]._id)
+								img.showcase-image(src="/public/media/" + wallets[i].filenames[0])
+							a.showcase-link(href="/collections/wallets/" + wallets[i]._id)=wallets[i].name
+							form.add-form(action="/cart/add", method="POST")
+								input.hidden(value="/", name="referer")
+								input.hidden(value=wallets[i]._id, name="id")
+								input.hidden(value=1, name="quantity")
+								button.add-button(type="submit") В корзину
+					- }
+				- }
+				- if(wallets.length % 3 != 0) {
+					- for(var j = 0; j  < wallets.length % 3 + 1; j++) {
+						div
+							p
+					- }
+				- }
+			h1.title-home Обложки
+			.showcase.center
+				- if(covers.length < 5) {
+					- for(var i = 0; i < covers.length; i++) {
+						.product-showcase
+							a(href="/collections/covers/" + covers[i]._id)
+								img.showcase-image(src="/public/media/" + covers[i].filenames[0])
+							a.showcase-link(href="/collections/covers/" + covers[i]._id)=covers[i].name
+							form.add-form(action="/cart/add", method="POST")
+								input.hidden(value="/", name="referer")
+								input.hidden(value=covers[i]._id, name="id")
+								input.hidden(value=1, name="quantity")
+								button.add-button(type="submit") В корзину
+					- }
+				- }
+				- else {
+					- for(var i = 0; i < covers.length; i++) {
+						.product-showcase
+							a(href="/collections/covers/" + covers[i]._id)
+								img.showcase-image(src="/public/media/" + covers[i].filenames[0])
+							a.showcase-link(href="/collections/covers/" + covers[i]._id)=covers[i].name
+							form.add-form(action="/cart/add", method="POST")
+								input.hidden(value="/", name="referer")
+								input.hidden(value=covers[i]._id, name="id")
+								input.hidden(value=1, name="quantity")
+								button.add-button(type="submit") В корзину
+					- }
+				- }
+				- if(covers.length % 3 != 0) {
+					- for(var j = 0; j  < covers.length % 3 + 1; j++) {
+						div
+							p
+					- }
+				- }
+		include footnote.pug

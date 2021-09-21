@@ -1,0 +1,43 @@
+html
+	head
+		title Новый товар
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+	
+		#admin.center
+			p Админ
+			a.back(href="/admin/products", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Новый товар
+			form(action="/admin/products/add", method="POST", enctype="multipart/form-data")
+				div
+					label(for="name") Название товара: 
+					input.input(name="name", placeholder="Название товара", value="Новый товар", required)
+				br
+				div
+					label(for="category") Категория: 
+					select.input(name="category")
+						option(value="wallet") Кошелек
+						option(value="cover") Обложка на пасспорт
+				br
+				div
+					label(for="tags") Теги: 
+					input.input(name="tags", placeholder="Через пробел")
+				br
+				div
+					label(for="description") Описание товара: 
+					br
+					textarea.input(name="description", placeholder="Описание товара")
+				br
+				div
+					label(for="price") Цена товара: 
+					input.input(type="number", name="price", placeholder="Цена товара", required)
+				br
+				div
+					label(for="file") Картинки товара: 
+					input.center(type="file", name="file", multiple="multiple", placeholder="Картинка товара", style="border:none", required)
+				br
+				button.add-button(type="submit") Создать
+		include footnote.pug

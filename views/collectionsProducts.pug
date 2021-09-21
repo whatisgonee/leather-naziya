@@ -1,0 +1,42 @@
+html
+	head
+		title Коллекции
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("collections")
+		if(message)
+			#message
+				p #{message}
+					a(href="/cart") корзину
+				button(onclick="messageClose()") ×
+		#products.center
+			p Товары
+			if(collection=="wallet")
+				h1 Кошельки
+			else if(collection=="cover")
+				h1 Обложки
+			else if(collection=="all")
+				h1 Все
+			else
+				h1=collection
+			
+			.showcase.center
+					-for(var i = 0; i < products.length; i++) {
+						.product-showcase
+							a(href="/collections/products/" + products[i]._id)
+								img.showcase-image(src="/public/media/" + products[i].filenames[0])
+							a.showcase-link(href="/collections/products/" + products[i]._id)=products[i].name
+							form.add-form(action="/cart/add", method="POST")
+								input.hidden(value="/collections/" + collection + "/", name="referer")
+								input.hidden(value=products[i]._id, name="id")
+								input.hidden(value=1, name="quantity")
+								button.add-button(type="submit") В корзину
+					- }
+					- if(products.length % 3 != 0) {
+						- for(var j = 0; j  < products.length % 3 + 1; j++) {
+							div
+								p
+						- }
+					- }
+		include footnote.pug

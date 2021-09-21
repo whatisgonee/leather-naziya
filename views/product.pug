@@ -1,0 +1,44 @@
+html
+	head
+		title=product.name
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("collections")
+		if(message)
+			#message
+				p #{message}
+					a(href="/cart") корзину
+				button(onclick="messageClose()") ×
+		#product
+				.product-images
+					button.move-image(onclick="previous()")
+						i.fas.fa-chevron-left
+					img.product-image(src="/public/media/" + product.filenames[0])
+					- for(var i = 1; i < product.filenames.length; i++) {
+						img.product-image.hidden(src="/public/media/" + product.filenames[i])
+					- }
+					button.move-image(onclick="next()")
+						i.fas.fa-chevron-right
+						
+				.product-info
+					h1=product.name
+					p=product.description
+					.cart-buttons
+						form(action="/cart/add/", method="POST")
+							if(product.category == "кошельки")
+								input.hidden(value="/collections/wallets/" + product._id, name="referer")
+							else
+								input.hidden(value="/collections/covers/" + product._id, name="referer")
+							input.hidden(value=product.id, name="id")
+							div
+								label(for="quantity") Количество:       
+								select.quantity-select(name="quantity")
+									option(value="1") 1
+									option(value="2") 2
+									option(value="3") 3
+									option(value="4") 4
+									option(value="5") 5
+							input.add-button(name="action", value="В корзину", type="submit")
+							input.add-button(name="action", value="Купить", type="submit")
+		include footnote.pug

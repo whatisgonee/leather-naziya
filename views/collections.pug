@@ -1,0 +1,17 @@
+html
+	head
+		title Коллекции
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("collections")
+		#collections
+			p Все Коллекции
+			.collections
+				.collection(style="background-image: url(/public/wallets_cover.jpeg)")
+					h2.collection-title Кошельки
+					a.view(href="/collections/wallet/") Все товары
+				.collection(style="background-image: url(/public/covers_cover.jpeg)")
+					h2.collection-title Обложки
+					a.view(href="/collections/cover/") Все товары
+		include footnote.pug

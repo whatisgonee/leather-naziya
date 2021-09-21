@@ -1,0 +1,18 @@
+html
+	head
+		title Настройки
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		
+		#admin.center
+			p Админ
+			a.back(href="/admin/", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Настройки
+			.panel
+				a.admin-link(href="/admin/login?redirect=password") Сменить пароль
+				a.admin-link(href="/admin/logout") Выйти
+			
+		include footnote.pug

@@ -1,0 +1,31 @@
+html
+	head
+		title Изменить товар
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		if(message)
+			#message
+				p #{message}
+					a(href="/admin/products/") Обратно
+				button(onclick="messageClose()") ×
+		#product
+				.product-images
+					button.move-image(onclick="previous()")
+						i.fas.fa-chevron-left
+					img.product-image(src="/public/media/" + product.filenames[0])
+					- for(var i = 1; i < product.filenames.length; i++) {
+						img.product-image.hidden(src="/public/media/" + product.filenames[i])
+					- }
+					button.move-image(onclick="next()")
+						i.fas.fa-chevron-right
+						
+				.product-info
+					form(style="display: inline-block;width: 100%;", action="/admin/products/edit", method="POST")
+						input.editName(value=product.name, name="title", placeholder="Название товара")
+						input.hidden(value=product._id, name="id")
+						textarea.editDescription(name="description", placeholder="Описание товара")=product.description
+						.cart-buttons(style="padding:2%;")
+							button.add-button(type="submit") Сохранить
+		include footnote.pug

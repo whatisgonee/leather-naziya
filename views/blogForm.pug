@@ -1,0 +1,26 @@
+html
+	head
+		title Блог
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("blog")
+		
+		#admin.center
+			p Админ
+			a.back(href="/admin/blog", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Новый блог
+			form(action="/admin/blog/add", method="POST")
+				div
+					label(for="name") Оглавление: 
+					input.input(name="name", placeholder="Оглавление", required)
+				br
+				div
+					label(for="blog") Запись блога: 
+					br
+					textarea.input(name="blog", placeholder="Основной текст", required)
+				br
+				button.add-button(type="submit") Создать
+		
+		include footnote.pug

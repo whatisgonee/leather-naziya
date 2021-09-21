@@ -1,0 +1,46 @@
+html
+	head
+		title Корзина
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		#cart
+			p Корзина
+			.cart-parent.center
+				if(products.length > 0)
+					- for(var i = 0; i < products.length; i++) {
+						.cart-product.center
+							img.cart-image(src="/public/media/" + products[i].preview)
+							.cart-info
+								h2=products[i].name
+								p #{products[i].price} тг.
+							.quantity
+								form(action="/cart/add", method="POST")
+									input.hidden(value="/cart", name="referer")
+									input.hidden(value=products[i].id, name="id")
+									input.hidden(value=products[i].quantity-1, name="quantity")
+									button.quantity-button(type="submit") –
+								p.quantity-text=products[i].quantity
+								form(action="/cart/add", method="POST")
+									input.hidden(value="/cart", name="referer")
+									input.hidden(value=products[i].id, name="id")
+									input.hidden(value=products[i].quantity+1, name="quantity")
+									button.quantity-button(type="submit") +
+							h2.total=products[i].price*products[i].quantity
+							form(action="/cart/add", method="POST")
+									input.hidden(value="/cart", name="referer")
+									input.hidden(value=products[i].id, name="id")
+									input.hidden(value=0, name="quantity")
+									button.delete-button(type="submit") Удалить
+						hr
+						hr
+					- }
+					
+					h1 В общем: #{sum} тг.
+					
+					a.order(href="/checkout") Купить
+				else
+					i.fas.fa-ghost.empty
+					h2 Ваша корзина пуста!
+		include footnote.pug

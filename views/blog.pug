@@ -1,0 +1,55 @@
+html
+	head
+		title Блог
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("blog")
+		
+		- if(role == "admin") {
+			#blog.center
+				p Блог
+				a.back(href="/admin/", title="Обратно")
+					i.fas.fa-arrow-left
+				h1 Недавние
+				a.admin-link.center(href="/admin/blog/add", style="width:30%;") Добавить блог
+				
+				.showcase.center(style="flex-direction:column")
+					- for(var i = 0; i < blogs.length; i++) {
+						a.showcase-link.product-showcase(style="text-align:left", href="/blog/" + blogs[i]._id)
+							div
+								h2=blogs[i].title
+								.fade
+									!=blogs[i].body
+							p(style="cursor:default")=blogs[i].parsedDate
+					- }
+					- if(blogs.length % 3 != 0) {
+						- for(var j = 0; j  < blogs.length % 3; j++) {
+							div
+								p
+						- }
+					- }
+		- }
+		- else {
+			#blog.center
+				p Блог
+				h1 Недавние
+				
+				.showcase.center(style="flex-direction:column")
+					- for(var i = 0; i < blogs.length; i++) {
+						a.showcase-link.product-showcase(style="text-align:left", href="/blog/" + blogs[i]._id)
+							div
+								h2=blogs[i].title
+								.fade
+									!=blogs[i].body
+							p(style="cursor:default")=blogs[i].parsedDate
+					- }
+					- if(blogs.length % 3 != 0) {
+						- for(var j = 0; j  < blogs.length % 3; j++) {
+							div
+								p
+						- }
+					- }
+		- }
+		
+		include footnote.pug

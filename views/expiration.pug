@@ -1,0 +1,29 @@
+html
+	head
+		title Время архивации
+		include links.pug
+
+	body
+		include navbar.pug
+		+navbar("")
+		#admin.center
+			p Админ
+			a.back(href="/admin/settings", title="Обратно")
+				i.fas.fa-arrow-left
+			h1 Время в архивации
+			p=message
+			form(action="/admin/settings/expiration", method="POST")
+				label Время в архивации (выполненные или отклонненые заказы будут автоматически удаляться из архива после определенного времени):
+				br
+				br
+				select(name="expirationTime")
+					option(value="24") 1 день
+					option(value="72") 3 дня
+					option(value="120") 5 дней
+					option(value="168") Неделя
+				br
+				br
+				button.add-button(type="submit") Сохранить
+
+
+		include footnote.pug

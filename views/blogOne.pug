@@ -1,0 +1,13 @@
+html
+	head
+		title=blog.title
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("blog")
+		
+		#blog(style="text-align:left")
+			h1=blog.title
+			!=blog.body
+		
+		include footnote.pug

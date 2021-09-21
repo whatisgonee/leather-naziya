@@ -1,0 +1,54 @@
+html
+	head
+		title Касса
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+		#checkout
+			p Касса
+			h1 Почти готово:
+			p=formMessage
+			if(user)
+				form(action="/checkout", method="POST")
+					div
+						label(for="name") Ваше имя: 
+						input(name="name", required, value=user.name)
+					br
+					div
+						label(for="email") Почта: 
+						input(type="email", name="email", required, value=user.email)
+					br
+					div
+						label(for="phone") Номер телефона: 
+						input(type="tel", name="phone", required, value=user.phone)
+					br
+					div
+						label(for="note") Записка к заказу (необязательно):
+						br
+						br
+						textarea(name="note", placeholder="Как мы можем вам помочь?")
+					br
+					button.add-button(type="submit") Купить
+			else
+				form(action="/checkout", method="POST")
+					div
+						label(for="name") Ваше имя: 
+						input(name="name", required)
+					br
+					div
+						label(for="email") Почта: 
+						input(type="email", name="email", required)
+					br
+					div
+						label(for="phone") Номер телефона: 
+						input(type="tel", name="phone", required)
+					br
+					div
+						label(for="note") Записка к заказу (необязательно):
+						br
+						br
+						textarea(name="note", placeholder="Как мы можем вам помочь?")
+					br
+					button.add-button(type="submit") Купить
+		include footnote.pug

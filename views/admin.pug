@@ -1,0 +1,17 @@
+html
+	head
+		title Админ
+		include links.pug
+	body
+		include navbar.pug
+		+navbar("")
+	
+		#admin.center
+			p Админ
+			h1 Главная
+			.panel
+				a.admin-link(href="/admin/orders") Заказы
+				a.admin-link(href="/admin/products") Товары
+				a.admin-link(href="/admin/blog/") Блог
+				a.admin-link(href="/admin/settings") Настройки
+		include footnote.pug

@@ -1,0 +1,23 @@
+html
+	head
+		title Кошельки
+		| &#x9;&#x9;
+		include links.pug
+	body
+		if(user)
+			include navbar.pug
+		else
+			include navbarUnlogged.pug
+		
+		#products
+			- for(var i = 0; i < wallets.length; i++) {
+				.product
+					a(href="/shop/products/" + wallets[i]._id)
+						img(src="../public/media/" + wallets[i].filenames[i])
+					a.textLink(href="/shop/products/" + wallets[i]._id)=wallets[i].name
+					p.price #{wallets[i].price}₸
+					form.productForm(action="/shop/add", method="POST")
+						input.invisible(value=wallets[i]._id, name="id")
+						input.addToCart(type="submit", value="В корзину")
+			- }
+		include footnote.pug
