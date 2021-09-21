@@ -285,8 +285,6 @@ router.get("/collections", async (req, res) => {
 	const finishUp = function(result, wallets, covers) {
 		if(!result || !wallets || !covers) res.send("Что-то пошло не так");
 		else {
-			var previews = [wallets[0].filenames[0]];
-			
 			res.render("collections", {previews: previews});
 		}
 	}
