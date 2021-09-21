@@ -4,7 +4,6 @@ var search;
 var close;
 var mobileNav;
 var messageClose;
-var archive;
 
 document.addEventListener('DOMContentLoaded', () => {
 	
@@ -64,18 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.getElementById("message").style.display = "none";
 	}
 	
-	archive = function() {
-		if(hidden) {
-			document.getElementById("hide").innerHTML = "<i class=\"fas fa-arrow-up\">";
-			document.getElementById("archived").style.display = "inline-block";
-		} else {
-			document.getElementById("hide").innerHTML = "<i class=\"fas fa-arrow-down\">"
-			document.getElementById("archived").style.display = "none";
-		}
-		
-		hidden = !hidden;
-	}
-	
-	document.getElementById("hide").addEventListener('click', archive);
 	document.getElementById("close").addEventListener('click', close);
 });
