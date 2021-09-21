@@ -1,0 +1,45 @@
+mixin navbar(active)
+	#topbar
+		form#search-form.center(action="/collections/search", method="GET")
+			.search-form
+				
+				input#searchInput(name="search", placeholder="Поиск...", disabled)
+				button#close(type="button") ×
+		a.icon(href="javascript:void(0)", onclick="mobileNav()")
+			i.fa.fa-bars
+		div.title.center
+			a(href="/", style="color: inherit;text-decoration:none") Handmade Naziya
+		#nav-holder
+			a#menu.menu-close(href="javascript:void(0)", onclick="mobileNav()") ×
+			div.title-hidden.center
+				a(href="/", style="color: inherit;text-decoration:none") Handmade Naziya
+			.center.nav-holder
+				if(active=="main")
+					a.nav-link.active(href="/") Главная
+					a.nav-link(href="/collections") Коллекции
+					a.nav-link(href="/about-us") О нас
+					a.nav-link(href="/blog") Блог
+				else if(active=="collections")
+					a.nav-link(href="/") Главная
+					a.nav-link.active(href="/collections") Коллекции
+					a.nav-link(href="/about-us") О нас
+					a.nav-link(href="/blog") Блог
+				else if(active=="about-us")
+					a.nav-link(href="/") Главная
+					a.nav-link(href="/collections") Коллекции
+					a.nav-link.active(href="/about-us") О нас
+					a.nav-link(href="/blog") Блог
+				else if(active=="blog")
+					a.nav-link(href="/") Главная
+					a.nav-link(href="/collections") Коллекции
+					a.nav-link(href="/about-us") О нас
+					a.nav-link.active(href="/blog") Блог
+				else
+					a.nav-link(href="/") Главная
+					a.nav-link(href="/collections") Коллекции
+					a.nav-link(href="/about-us") О нас
+					a.nav-link(href="/blog") Блог
+			a.cart.center(href="/cart") Корзина 
+				i.fa.fa-shopping-basket.hidden
+			button(onclick="search()")#search.search.center Поиск 
+				i.fa.fa-search.hidden
