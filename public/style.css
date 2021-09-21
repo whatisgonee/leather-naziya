@@ -1,0 +1,1261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=MonteCarlo&display=swap');
+
+:root {
+	--red: #ff4747;
+	--green: #63ff5e;
+	--yellow: #ffe547;
+}
+
+h1 {
+	margin-top: 0;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.link {
+	color: inherit;
+}
+
+/* TOP BAR RELATED CLASSES */
+
+#topbar {
+	display: flex;
+	align-items: center;
+	position: fixed;
+	width: 100%;
+	height: 10vh;
+	margin-left: -8px;
+	background-color: black;
+	color: white;
+	font-family: Montserrat, sans-serif;	
+	z-index: 4;
+	top: 0;
+}
+
+#nav-holder {
+	padding-top: 5%;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 0vw;
+	background-color: black;
+	display: none;
+	flex-direction: column;
+	gap: 5%;
+	margin-top: 8px;
+	z-index: 6;
+	transition: 500ms ease;
+}
+
+.title-hidden {
+	display: none;
+	text-align: center;
+	font-family: 'MonteCarlo', cursive;
+	color: inherit;
+	text-decoration: none;
+	font-size: 4.5vh;
+	grid-area: logo;
+}
+
+#search-form {
+	position: fixed;
+	display: none;
+	width: 100vw;
+	height: 100%;
+	background-color: white;
+	z-index: 8;
+	top: 0;
+}
+
+.menu-close {
+	color: grey;
+	text-decoration: none;
+	font-weight: 100;
+	font-size: 5vh;
+	margin-left: 3%;
+	margin-top: -2vh;
+	margin-right: auto;
+}
+.search-form {
+	padding: 2%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.search-form input {
+	display: inline-block;
+	border: none;
+	font-size: 3vh;
+	width: 30%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.search-form input:focus {
+	outline: none;
+}
+
+.search-form button {
+	background-color: transparent;
+	border: none;
+	font-size: 5vh;
+	cursor: pointer;
+	color: darkgrey;
+	font-weight: 100;
+}
+
+.nav-link {
+	display: inline-block;
+	margin-top: auto;
+	color: inherit;
+	text-decoration: none;
+	font-size: 25px;
+	font-weight: 300;
+	margin-left: 3%;
+}
+
+.nav-link::after {
+	display: block;
+	content: '';
+	height: 1px;
+	width: 100%;
+	background: grey;
+	transition: width .5s ease, background .5s ease;
+}
+
+.nav-link:hover::after {
+	width: 100%;
+	background: white;
+}
+
+.nav-holder {
+	position: relative;
+	grid-area: links;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	width: 100%;
+	justify-content: center;
+	margin-top: -5%;
+}
+
+.title {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	font-family: 'MonteCarlo', cursive;
+	color: inherit;
+	text-decoration: none;
+	font-size: 4.5vh;
+}
+
+.search {
+	display: block;
+	color: #bfbfbf;
+	background-color: transparent;
+	border: none;
+	grid-area: search;
+	cursor: pointer;
+	font-size: 18px;
+	font-family: 'Montserrat', sans-serif;
+	transition: 300ms;
+	width: 120px;
+	height: 20px;
+	
+}
+
+.icon {
+	position: fixed;
+	left: 3vh;
+	float: left;
+	z-index: 4;
+	cursor: pointer;
+	font-size: 3vh;
+	color: inherit;
+	text-decoration: none;
+}
+
+.search:hover {
+	color: white;
+}
+
+.search:hover .hidden {
+	opacity: 100%;
+	width: 10px;
+	transition: 300ms;
+}
+
+.cart {
+	grid-area: cart;
+	display: block;
+	text-align: center;
+	font-size: 20px;
+	width: 120px;
+	height: 20px;
+	color: inherit;
+	text-decoration: none;
+}
+
+.cart:hover .hidden {
+	opacity: 100%;
+	width: 10px;
+	transition: 300ms;
+}
+
+.hidden {
+	height: 0px;
+	width: 0px;
+	opacity: 0%;
+	transition: 150ms;
+}
+
+/*========*/
+
+/* FEATURED COLLECTIONS RELATED CLASSES */
+
+#featured-collections {
+	margin-top: 11vh;
+	text-align: center;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	margin-left: -8px;
+	padding-left: 16px;
+}
+
+.showcase {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	gap: 5vh;
+}
+
+.product-showace {
+	display: flex;
+	flex-direction: column;
+	width: 33%;
+	height: 20%;
+	flex-grow: 1;
+}
+
+.showcase-link {
+	margin-top: 12px;
+	color: inherit;
+	text-decoration: none;
+	display: inline-block;
+	transition: color .5s ease;
+}
+
+.showcase-link::after {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 0%;
+	background: black;
+	transition: width .5s ease, background-color .5s ease;
+}
+
+.product-showcase:hover .showcase-link::after {
+	width: 0;
+}
+
+.product-showcase img {
+	max-width: 100%;
+	height: auto;
+}
+
+.showcase-image {
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+	transition: 500ms ease;
+}
+
+.product-showcase:hover .showcase-image {
+	filter: brightness(75%);
+}
+
+.add-form {
+	margin-top: 12px;
+}
+
+.add-button {
+	width: 100%;
+	height: 5vh;
+	border: solid 1px black;
+	cursor: pointer;
+	background-color: white;
+	transition: background-color .5s ease;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2vh;
+	color: black;
+	text-align: center;
+}
+
+.add-button:hover {
+	background-color: black;
+}
+
+.add-button:hover {
+	color: white;
+}
+
+/*========*/
+
+/* LOGIN RELATED CLASSES */
+
+.form-parent {
+	margin-top: 11vw;
+	width: 100%;
+	text-align: center;
+	font-family: Montserrat, sans-serif;
+}
+
+.text-input {
+	border: solid 1px black;
+	transition: 500ms ease;
+	margin-left: 4px;
+}
+
+.text-input:focus {
+	outline: none;
+	background-color: black;
+	color: white;
+}
+
+.form {
+	width: 20%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form .add-button {
+	width: 50%;
+	height: 5%;
+}
+
+/*========*/
+
+/* COLLECTIONS RELATED CLASSES */
+
+#collections {
+	margin-top: 11vh;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 100%;
+	font-family: Montserrat, sans-serif;
+}
+
+.collections {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+    gap: 20px;
+}
+
+.collection {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding: 2%;
+	height: 400px;
+	color: white;
+	background-position: center;
+	background-size: cover;
+	transition: ease 0.3s;
+}
+
+.collection:hover {
+	filter: saturate(0%);
+}
+
+.view {
+	position: absolute;
+	color: black;
+	background-color: white;
+	text-decoration: none;
+	padding: 5%;
+	border: solid 1px white;
+	border-bottom: none;
+	transition: 500ms ease;
+	float: left;
+	bottom: 0;
+}
+
+.view:hover {
+	background-color: black;
+	color: white;
+}
+
+.collection-title {
+	position: absolute;
+	float: left;
+	font-size: 30px;
+}
+
+/*========*/
+
+/* CART RELATED CLASSES */
+
+#cart {
+	margin-top: 11vh;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-family: Montserrat, sans-serif;
+}
+
+.cart-parent {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+}
+
+.cart-parent hr {
+	
+	color: transparent;
+}
+
+.cart-product {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+
+	grid-template-columns: 200px auto 150px 100px 70px;
+}
+
+.cart-image {
+	max-width: 100%;
+	float: left;
+}
+
+.cart-info {
+	display: flex;
+	flex-direction: column;
+	float: left;
+	margin-left: 5%;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.quantity {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	float: right;
+	height: 100%;
+}
+
+.quantity form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 8px;
+}
+
+.quantity-button {
+	background-color: inherit;
+	border: none;
+	font-size: 40px;
+	font-weight: 200;
+	cursor: pointer;
+}
+
+.quantity-text {
+	font-size: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.total {
+	margin-top: 0px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	float: right;
+}
+
+.empty {
+	position: absolute;
+	top: 45%;
+	font-size: 15vh;
+	color: #d0d0d0;
+	width: 100%;
+	left: 0;
+	z-index: -4;
+}
+
+.delete-button {
+	height: 100%;
+	font-size: 18px;
+	background-color: transparent;
+	border: none;
+	font-weight: 240;
+	cursor: pointer;
+	float: right;
+}
+
+.order {
+	color: inherit;
+	text-decoration: none;
+	border: solid 1px black;
+	padding: 2%;
+	transition: 500ms ease;
+}
+
+.order:hover {
+	background-color: black;
+	color: white;
+}
+
+/*========*/
+
+/* PRODUCT RELATED CLASSES */
+
+#product {
+	display: flex;
+	flex-direction: column;
+	gap: 2vh;
+	margin-top: 11vh;
+	width: 100%;
+}
+
+.product-images {
+	display: flex;
+	height: 50vw;
+	width: 100%;
+}
+
+#product img {
+	height: 100%;
+}
+
+.move-image {
+	width: 5vh;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 30px;
+	transition: 500ms ease;
+	border: solid 1px black;
+	font-size: 3vh;
+}
+
+.move-image:hover {
+	background-color: black;
+	color: white;
+}
+
+.product-info {
+	display: inline-block;
+	border: solid 1px black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.product-info h1 {
+	padding: 8px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+}
+
+.product-info p {
+	padding: 8px;
+	word-break: break-all;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+}
+
+.cart-buttons {
+	display: flex;
+	gap: 10%;
+}
+
+.cart-buttons .add-button {
+	position: relative;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	height: 50%;
+	font-size: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.cart-buttons form {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding-left: 2%;
+	padding-right: 2%;
+	width: 100%;
+	height: 50%;
+	gap: 3vh;
+}
+
+.quantity-select {
+	background-color: transparent;
+	border: solid 1px black;
+	width: 50%;
+	height: 100%;
+}
+
+/*========*/
+
+/* CHECKOUT RELATED CLASSES */
+
+#checkout {
+	margin-top: 11vh;
+	width: 100%;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#checkout input, textarea {
+	border: solid 1px black;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#checkout textarea {
+	width: 200px;
+	height: 100px;
+}
+
+#checkout textarea:focus, input:focus {
+	outline: none;
+}
+
+#checkout .add-button {
+	width: 25vh;
+	font-size: 2.5vh;
+}
+
+/*========*/
+
+/* ADMIN LOGIN RELATED CLASSES */
+
+#admin-login {
+	margin-top: 11vh;
+	text-align: center;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#admin-login input {
+	border: solid 1px grey;
+}
+
+#admin-login input:focus {
+	border: solid 1px black;
+}
+
+#admin-login .add-button {
+	font-size: 2vh;
+	width: 10vh;
+	height: 7%;
+}
+
+/*========*/
+
+/* PRODUCTS RELATED CLASSES */
+
+#products {
+	margin-top: 11vh;
+	text-align: center;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#products img {
+	max-width: 100%;
+}
+
+/*========*/
+
+/* ABOUT US RELATED CLASSES */
+
+#about-us {
+	margin-top: 11vh;
+	font-family: 'Montserrat', sans-serif;
+	width: 75%;
+	text-align: center;
+}
+
+#about-us a {
+	color: inherit;
+}
+
+.about-us-images {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: auto;
+	margin-right: auto;
+	gap: 0.5vw;
+	margin-top: 3%;
+	padding-bottom: 5%;
+	flex-direction: column;
+}
+
+.about-us-images>* {
+	flex: 1 1 25%;
+}
+
+#about-us img {
+	max-width: 100%;
+}
+
+/*========*/
+
+/* ADMIN RELATED CLASSES */
+
+#admin {
+	margin-top: 11vh;
+	width: 75%;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	padding-bottom: 2%;
+}
+
+#admin input,
+#admin textarea {
+	border: solid 1px grey;
+}
+
+#admin input:focus,
+#admin textarea:focus {
+	border: solid 1px black;
+	outline: none;
+}
+
+#admin .add-button {
+	width: 15vh;
+	font-size: 2vh;
+	height: 8%;
+}
+
+.hide {
+	background-color: transparent;
+	border: none;
+	font-size: 3vh;
+	color: inherit;
+	cursor: pointer;
+}
+
+.back {
+	position: fixed;
+	font-size: 4vh;
+	left: 0;
+	color: black;
+	padding-left: 2vh;
+	margin-top: -3vh;
+}
+
+.delete, .confirm, .send {
+	display: block;
+	border-radius: 3px;
+	font-size: 3vh;
+	padding: 8px;
+	transition: 500ms ease;
+	width: 50%;
+	text-decoration: none;
+	text-align: center;
+}
+
+.delete {
+	color: var(--red);
+	border: solid 1px #ff2222;
+	cursor: pointer;
+}
+
+.delete:hover {
+	background-color: var(--red);
+	color: white;
+}
+
+.vertical-line {
+	width: 1px;
+	height: 20px;
+	background-color: black;
+}
+
+.confirm {
+	color: var(--green);
+	border: solid 1px #36ff2f;
+}
+
+.confirm:hover {
+	background-color: var(--green);
+	color: white;
+}
+
+.confirmation-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 1px black;
+	color: inherit;
+	text-decoration: none;
+	width: 25vh;
+	height: 5vh;
+	transition: 500ms ease;
+	cursor: pointer;
+	font-size: 2vh;
+}
+
+.confirmation-button:hover {
+	background-color: black;
+	color: white;
+}
+
+.send {
+	color: var(--yellow);
+	border: solid 1px #ffe029;
+}
+
+.send:hover {
+	background-color: var(--yellow);
+	color: white;
+}
+
+.admin-link {
+	color: black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	border: solid 1px black;
+	padding: 2%;
+	transition: 500ms ease;
+}
+
+.admin-link:hover {
+	background-color: black;
+	color: white;
+}
+
+.admin-order {
+	border: solid 1px;
+	display: block;
+	width: 100%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	color: inherit;
+	text-decoration: none;
+	margin-top: 10%;
+}
+
+.admin-order:hover {
+	text-decoration: underline;
+}
+
+.orders {
+	display: inline-block;
+	width: 50%;
+}
+
+.input {
+	border: solid 1px black;
+	padding: 2px;
+}
+
+.panel {
+	position: relative;
+	margin-top: 3%;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 2vh;
+	width: 100%;
+}
+
+.panel>* {
+	flex: 1 1 25%;
+}
+
+.active::after {
+	width: 100%;
+	background: white;
+}
+
+.message {
+	margin-top: 11vh;
+	font-family: 'Montserrat', sans-serif;
+	width: 100%;
+	text-align: center;
+}
+
+.editName, .editDescription {
+	font-family: 'Montserrat', sans-serif; 
+	border: none;
+	font-weight: 300;
+	padding: 8px;
+	color: black;
+	background-color: transparent;
+}
+
+.editName:focus, .editDescription:focus {
+	outline: none;	
+}
+
+.editName {
+	font-size: 2em;
+	width: 100%;
+}
+
+.editDescription {
+	font-size:16px;
+	overflow-x: auto;
+	height: 44vh;
+	resize: none;
+	display: inline-grid;
+	width: 100%;
+}
+
+/*========*/
+
+/* FOOTNOTE RELATED CLASSES */
+
+#footnote {
+	display: flex;
+	justify-content: space-between;
+	border-top: solid 1px grey;
+	padding-left: 16px;
+	margin-left: -8px;
+	width: 100%;
+	gap: 5%;
+	font-family: 'Montserrat', sans-serif;
+	transform: translateY(70%);
+	background-color: white;
+}
+
+#footnote a, #footnote .btn {
+	text-decoration: none;
+	color: grey;
+	transition: 300ms linear;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 15px;
+	text-align: start;
+}
+
+#footnote input {
+	width: 100%;
+	height: 20%;
+	font-size: 17px;
+	padding: 3px;
+	border: solid 1px darkgrey;
+	font-family: 'Montserrat', sans-serif;
+	transition: 500ms ease;
+}
+
+#footnote input:hover {
+	border: solid 1px grey;
+}
+
+#footnote input:focus {
+	outline: none;
+	border: solid 1px black;
+}
+
+#instagram:hover {
+	color: #e1306c;
+}
+
+#footnote .link:hover, #footnote .btn:hover {color:black}
+
+.socialMedia {
+	display: none;
+}
+
+.newsletter {
+	width: 50%;
+	margin-right: 2%;
+}
+
+.newsletter-sub {
+	display: flex;
+	flex-direction: column;
+	gap: 2vh;
+}
+
+.sub {
+	height: 4vh;
+	border: solid 1px black;
+	cursor: pointer;
+	transition: 500ms ease;
+	font-size: 1.5vh;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.sub:hover {
+	background-color: black;
+	color: white;
+}
+
+
+
+#message {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 2.5vh;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	height: 10vh;
+	background-color: var(--green);
+	z-index: 6;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#message p {
+	padding-left: 1.5%;
+}
+
+#message a {
+	color: inherit;
+}
+
+#message button {
+	display: inline-block;
+	padding-right: 1.5%;
+	background-color: transparent;
+	font-size: 6vh;
+	border: none;
+	cursor: pointer;
+	color: inherit;
+	font-weight: 300;
+}
+
+.title-home {margin-top:4vh;}
+
+/*========*/
+
+/* BLOG RELATED CLASSES */
+
+#blog {
+	margin-top: 11vh;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+
+.fade {
+	white-space: nowrap; 
+	overflow: hidden;
+  	text-overflow: ellipsis; 
+	width: 400px;
+}
+
+@media only screen and (min-width: 769px) {
+	#topbar {
+		height: 10vw;
+	}
+	.showcase {
+		flex-flow: row wrap;
+		gap: 2vw;
+	}
+	
+	.showcase>* {
+		flex: 1 1 25%;
+	}
+	#admin, #about, #featured-collections, .form-parent, #collections, #collection, #cart, #product, #checkout, #admin-login, #products, #admin, #about-us, #blog {
+		margin-top: 12vw;
+	}
+	
+	.collections {
+		flex-direction: row;
+	}
+	
+	.collections>* {
+		flex: 1 1 25%;
+	}
+	
+	#topbar {
+		height: 10vw;
+	}
+	
+	.title {
+		font-size: 3.5vw;
+	}
+	
+	.icon {
+		display: none;
+	}
+	
+	#nav-holder {
+		display: grid;
+		grid-template-areas:
+			'search logo cart'
+			'search links cart';
+		grid-template-rows: 30% auto;
+		grid-template-columns: 13% auto 13%;
+		width: 100%;
+		height: 10vw;
+		padding-top: 0%;
+		top: 0;
+	}
+	
+	.nav-link::after {
+		height: 0.5vh;
+		width: 0;
+		background: white;
+		margin-top: 8px;
+	}
+	
+	.nav-link {
+		font-size: 2vw;
+		margin-left: 0;
+	}
+	
+	.nav-holder {
+		flex-direction: row;
+		grid-area: links;
+		gap: 3vw;
+	}
+	
+	.menu-close {
+		display: none;
+	}
+	
+	.title-hidden {
+		display: block;
+		font-size: 3vw;
+	}
+	
+	.search, .cart {
+		margin-top: 8vh;
+	}
+	
+	
+	.active::after {
+		width: 100%;
+		background: white;
+	}
+	
+	.search {font-size: 1.3vw;}
+	.cart {font-size :1.5vw;margin-left:0vw}
+	
+	.empty {
+		font-size: 15vw;
+	}
+	
+	.cart-product {
+		display: grid;
+	}
+	
+	.quantity {
+		margin-right: 20%;
+	}
+	
+	#close {font-size: 5vw;}
+	#searchInput {font-size: 3vw;}
+	
+	#product {
+		flex-direction: row;
+	}
+	
+	.product-images {
+		height: 37vw;
+	}
+	
+	.product-info {
+		width: 100%;
+	}
+	
+	.product-info p {
+		overflow-x: auto;
+		height: 44vh;
+	}
+	
+	.cart-buttons form {
+		flex-direction: row;
+	}
+	
+	.cart-buttons select {
+		width: 100%;
+		height: 40%;
+	}
+	
+	.about-us-images {
+		flex-direction: row;
+	}
+	
+	.move-image {
+		font-size: 2vw;
+	}
+	
+	.message {
+		margin-top: 12vw;
+	}
+	
+	.newsletter {
+		width: 50%;	
+	}
+	
+	.sub {
+		height: 35px;
+		width: 30%;
+		font-size: 15px;
+	}
+	
+	.socialMedia {
+		display: initial;
+	}
+	
+	.title-home {margin-top:3vw;}
+	
+	.add-button {
+		font-size: 1.2vw;
+	}
+	
+	#admin-login .add-button {
+		font-size: 1.5vw;
+		width: 11vw;
+	}
+	
+	#admin .add-button {
+		width: 30vw;
+		font-size: 1.5vw;
+	}
+	
+	.delete, .confirm, .send {
+		display: block;
+		border-radius: 3px;
+		font-size: 2vw;
+		padding: 8px;
+		transition: 500ms ease;
+		width: 30%;
+		text-decoration: none;
+		text-align: center;
+	}
+	
+	#message {
+		height: 10vh;
+		font-size: 1.5vw;
+	}
+	
+	.confirmation-button {
+		width: 25vw;
+		font-size: 1.5vw;
+		height: 10vh;
+	}
+	
+	.back {
+		font-size: 2.5vw;
+		padding-left: 1.3vw;
+		margin-top: -5vh;
+	}
+	
+	.hide {
+		font-size: 2vw;
+	}
+}
